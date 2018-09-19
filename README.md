@@ -2,6 +2,8 @@
 
 Experimental terminal using the new PTY APIs from Microsoft. Written in C#, and heavily based on the native code examples.
 
+**EDIT: All development has been moved to [my fork of microsoft/console](https://github.com/waf/console/tree/add-csharp-conpty-sample). It will soon result in a PR to that repo.** 
+
 ## Status
 
 Buggy proof-of-concept. Demonstrates the basic API calls required.
