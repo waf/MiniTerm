@@ -31,7 +31,6 @@ namespace MiniTerm
             var startupInfo = new STARTUPINFOEX();
             startupInfo.StartupInfo.cb = Marshal.SizeOf(startupInfo);
             var lpSize = IntPtr.Zero;
-            startupInfo.lpAttributeList = Marshal.AllocHGlobal(lpSize);
 
             var success = InitializeProcThreadAttributeList(IntPtr.Zero, 1, 0, ref lpSize);
             if (success || lpSize == IntPtr.Zero)
@@ -39,6 +38,7 @@ namespace MiniTerm
                 throw new InvalidOperationException("Could not calculate the number of bytes for the attribute list. " + Marshal.GetLastWin32Error());
             }
 
+            startupInfo.lpAttributeList = Marshal.AllocHGlobal(lpSize);
             success = InitializeProcThreadAttributeList(startupInfo.lpAttributeList, 1, 0, ref lpSize);
             if (!success)
             {
